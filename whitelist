@@ -1,32 +1,32 @@
-local Owner = ""
-local Admin = ""
-local Tester = ""
-local Moderator = ""
-local 
-task.spawn(function()
-    pcall(function()
-        if game:GetService("Players").LocalPlayer.Name == Owner then
-        return loadstring(game:HttpGet("https://raw.githubusercontent.com/itziceless/Lunar/refs/heads/main/NewMainScript.lua", true))()
-        print("Logged in as Owner.")
-            else
-            if game:GetService("Players").LocalPlayer.Name == Admin then
-            return loadstring(game:HttpGet("https://raw.githubusercontent.com/itziceless/Lunar/refs/heads/main/NewMainScript.lua", true))()
-            print("Logged in as Admin.")
-                else
-                if game:GetService("Players").LocalPlayer.Name == Tester then
-                return loadstring(game:HttpGet("https://raw.githubusercontent.com/itziceless/Lunar/refs/heads/main/NewMainScript.lua", true))()
-                print("Logged in as Tester.")
-                    else
-                    if game:GetService("Players").LocalPlayer.Name == Moderator then
-                    return loadstring(game:HttpGet("https://raw.githubusercontent.com/itziceless/Lunar/refs/heads/main/NewMainScript.lua", true))()
-                    print("Logged in as Moderator.")
-                        else
-                        game:GetService("Players").LocalPlayer:Kick('Not Whitelisted.')
-                            end
-                        end
-                    end
-                end
-            end
-        end
-    end)
-end)
+local httpService = game:GetService("HttpService")
+local url = "https://raw.githubusercontent.com/itziceless/whitelisthwids/refs/heads/main/users"
+local response = game:HttpGet(url, true)
+
+local success, users = pcall(loadstring(response))
+
+if not success or type(users) ~= "table" then
+    print("Error: Failed to load users list. Check GitHub file format and availability.")
+    return
+end
+
+local ingame = game:GetService("Players").LocalPlayer.Name
+local whitelisted = false
+
+print("Loaded Users Table:")
+for _, v in pairs(users) do
+    print(v)
+    if v == ingame then
+        whitelisted = true
+        else
+        whitelisted = false
+        break
+    end
+end
+
+if whitelisted then
+    print("Whitelisted")
+    
+else
+    print("Not Whitelisted")
+    
+end
