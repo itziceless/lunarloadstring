@@ -12,11 +12,11 @@ task.spawn(function()
                 else
                     if game:GetService("Players").LocalPlayer.Name == Tester then
                     return loadstring(game:HttpGet("https://raw.githubusercontent.com/itziceless/Lunar/refs/heads/main/NewMainScript.lua", true))()
-        else
-         if game:GetService("Players").LocalPlayer.Name == Moderator then
-        return loadstring(game:HttpGet("https://raw.githubusercontent.com/itziceless/Lunar/refs/heads/main/NewMainScript.lua", true))()
-        else
-        game:GetService("Players").LocalPlayer:Kick('')
+                        else
+                        if game:GetService("Players").LocalPlayer.Name == Moderator then
+                        return loadstring(game:HttpGet("https://raw.githubusercontent.com/itziceless/Lunar/refs/heads/main/NewMainScript.lua", true))()
+                            else
+                            game:GetService("Players").LocalPlayer:Kick('Not Whitelisted.')
                             end
                         end
                     end
