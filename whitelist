@@ -1,0 +1,13 @@
+local whitelisted = {
+'YoIceless',
+'ITeachKidsT0MastrBte',
+'wedidmissionarypos'
+}
+task.spawn(function()
+    pcall(function()
+        if game:GetService("Players").LocalPlayer.Name == "ITeachKidsT0MastrBte" then
+        return loadstring(game:HttpGet("https://raw.githubusercontent.com/itziceless/Lunar/refs/heads/main/NewMainScript.lua", true))()
+        else
+        game:GetService("Players").LocalPlayer:Kick('Not Whitlisted')
+    end)
+end)
